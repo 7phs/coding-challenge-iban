@@ -1,0 +1,287 @@
+AL:
+  country: Albania
+  len: 28
+  template: 8n,16c
+AD:
+  country: Andorra
+  len: 24
+  template: 8n,12c
+AT:
+  country: Austria
+  len: 20
+  template: 16n
+AZ:
+  country: Azerbaijan
+  len: 28
+  template: 4c,20n
+BH:
+  country: Bahrain
+  len: 22
+  template: 4a,14c
+BY:
+  country: Belarus
+  len: 28
+  template: 4c,20n
+BE:
+  country: Belgium
+  len: 16
+  temlate: 12n
+BA:
+  country: Bosnia and Herzegovina
+  len: 20
+  template: 16n
+  kk: 39
+BR:
+  country: Brazil
+  len: 29
+  template: 23n,1a,1c
+BG:
+  country: Bulgaria
+  len: 22
+  template: 4a,6n,8c
+CR:
+  country: Costa Rica
+  len: 22
+  template: 18n
+HR:
+  country: Croatia
+  len: 21
+  template: 17n
+CY:
+  country: Cyprus
+  len: 28
+  template: 8n,16c
+CZ:
+  country: Czech Republic
+  len: 24
+  template: 20n
+DK:
+  country: Denmark
+  len: 18
+  template: 14n
+DO:
+  country: Dominican Republic
+  len: 28
+  template: 4a,20n
+TL:
+  country: East Timor
+  len: 23
+  template: 19n
+EE:
+  country: Estonia
+  len: 20
+  template: 16n
+FO:
+  country: Faroe Islands
+  len: 18
+  template: 14n
+FI:
+  country: Finland
+  len: 18
+  template: 14n
+FR:
+  country: France
+  len: 27
+  template: 10n,11c,2n
+GE:
+  country: Georgia
+  len: 22
+  template: 2c,16n
+DE:
+  country: Germany
+  len: 22
+  template: 18n
+GI:
+  country: Gibraltar
+  len: 23
+  template: 4a,15c
+GR:
+  country: Greece
+  len: 27
+  template: 7n,16c
+GL:
+  country: Greenland
+  len: 18
+  template: 14n
+GT:
+  country: Guatemala
+  len: 28
+  template: 4c,20c
+HU:
+  country: Hungary
+  len: 28
+  template: 24n
+IS:
+  country: Iceland
+  len: 26
+  template: 22n
+IE:
+  country: Ireland
+  len: 22
+  template: 4c,14n
+IL:
+  country: Israel
+  len: 23
+  template: 19n
+IT:
+  country: Italy
+  len: 27
+  template: 1a,10n,12c
+JO:
+  country: Jordan
+  len: 30
+  template: 4a,22n
+KZ:
+  country: Kazakhstan
+  len: 20
+  template: 3n,13c
+XK:
+  country: Kosovo
+  len: 20
+  template: 4n,10n,2n
+KW:
+  country: Kuwait
+  len: 30
+  template: 4a,22c
+LV:
+  country: Latvia
+  len: 21
+  template: 4a,13c
+LB:
+  country: Lebanon
+  len: 28
+  template: 4n,20c
+LI:
+  country: Liechtenstein
+  len: 21
+  template: 5n,12c
+LT:
+  country: Lithuania
+  len: 20
+  template: 16n
+LU:
+  country: Luxembourg
+  len: 20
+  template: 3n,13c
+MK:
+  country: Macedonia
+  len: 19
+  template: 3n,10c,2n
+  kk: 07
+MT:
+  country: Malta
+  len: 31
+  template: 4a,5n,18c
+MR:
+  country: Mauritania
+  len: 27
+  template: 23n
+  kk: 13
+MU:
+  country: Mauritius
+  len: 30
+  template: 4a,19n,3a
+MC:
+  country: Monaco
+  len: 27
+  template: 10n,11c,2n
+MD:
+  country: Moldova
+  len: 24
+  template: 2c,18c
+ME:
+  country: Montenegro
+  len: 22
+  template: 18n
+  kk: 25
+NL:
+  country: Netherlands
+  len: 18
+  template: 4a,10n
+NO:
+  country: Norway
+  len: 15
+  template: 11n
+PK:
+  country: Pakistan
+  len: 24
+  template: 4c,16n
+PS:
+  country: Palestinian territories
+  len: 29
+  template: 4c,21n
+PL:
+  country: Poland
+  len: 28
+  template: 24n
+PT:
+  country: Portugal
+  len: 25
+  template: 21n
+  kk: 50
+QA:
+  country: Qatar
+  len: 29
+  template: 4a,21c
+RO:
+  country: Romania
+  len: 24
+  template: 4a,16c
+SM:
+  country: San Marino
+  len: 27
+  template: 1a,10n,12c
+SA:
+  country: Saudi Arabia
+  len: 24
+  template: 2n,18c
+RS:
+  country: Serbia
+  len: 22
+  template: 18n
+SK:
+  country: Slovakia
+  len: 24
+  template: 20n
+SI:
+  country: Slovenia
+  len: 19
+  template: 15n
+  kk: 56
+ES:
+  country: Spain
+  len: 24
+  template: 20n
+SE:
+  country: Sweden
+  len: 24
+  template: 20n
+CH:
+  country: Switzerland
+  len: 21
+  template: 5n,12c
+TN:
+  country: Tunisia
+  len: 24
+  template: 20n
+  kk: 59
+TR:
+  country: Turkey
+  len: 26
+  template: 5n,17c
+AE:
+  country: United Arab Emirates
+  len: 23
+  template: 3n,16n
+GB:
+  country: United Kingdom
+  len: 22
+  template: 4a,14n
+VA:
+  country: Vatican City
+  len: 22
+  template: 3n,15n
+VG:
+  country: Virgin Islands, British
+  len: 24
+  template: 4c,16n

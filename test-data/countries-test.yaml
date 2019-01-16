@@ -1,0 +1,13 @@
+BA:
+  country: Bosnia and Herzegovina
+  len: 20
+  template: 16n
+  kk: 39
+BR:
+  country: Brazil
+  len: 29
+  template: 23n,1a,1c
+CY:
+  country: Cyprus
+  len: 28
+  template: 8n,16c
