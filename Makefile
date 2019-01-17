@@ -9,13 +9,18 @@ build:
 testing:
 	LOG_LEVEL=error go test ./...
 
+run: export GO111MODULE=on
+run:
+	go mod vendor
+	LOG_LEVEL=info ADDR=:8080 STAGE=prod go run main.go run
+
 image:
 	docker build -t $(IMAGE):$(VERSION)  .
 
 push:
 	docker push $(IMAGE):$(VERSION)
 
-run:
+image-run:
 	docker run --rm -it -p 8080:8080 $(IMAGE):$(VERSION)
 
 all: build

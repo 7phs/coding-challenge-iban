@@ -17,7 +17,7 @@ const (
 
 	EnvStage      = "STAGE"
 	EnvLogLevel   = "LOG_LEVEL"
-	EnvAddress    = "ADDRESS"
+	EnvAddress    = "ADDR"
 	EnvDbPath     = "DB_PATH"
 	EnvTextLength = "LIMIT_TEXT_LENGTH"
 )
