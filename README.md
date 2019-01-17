@@ -2,7 +2,7 @@
 
 1. Go 1.12 beta2+
 
-2. Libraries which used in a project will downloaded by ```go mod vendor`` command
+2. Libraries which used in a project will downloaded by ```go mod vendor``` command
 
 ## Build
 
