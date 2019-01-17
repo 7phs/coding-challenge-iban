@@ -14,13 +14,11 @@ const (
 	defAddress    = ":8080"
 	defDbPath     = "./data/countries-iban.yaml"
 	defTextLength = 1024
-	defCors       = false
 
 	EnvStage      = "STAGE"
 	EnvLogLevel   = "LOG_LEVEL"
 	EnvAddress    = "ADDRESS"
 	EnvDbPath     = "DB_PATH"
-	EnvCors       = "CORS"
 	EnvTextLength = "LIMIT_TEXT_LENGTH"
 )
 
@@ -31,7 +29,6 @@ type Config struct {
 	address string
 	dbPath  string
 
-	http  Http
 	limit Limit
 }
 
@@ -42,10 +39,6 @@ func ParseConfig() *Config {
 
 		address: helper.EnvStr(EnvAddress, defAddress),
 		dbPath:  helper.EnvStr(EnvDbPath, defDbPath),
-
-		http: Http{
-			cors: helper.EnvBool(EnvCors, defCors),
-		},
 
 		limit: Limit{
 			textLength: helper.EnvInt(EnvTextLength, defTextLength),
@@ -67,10 +60,6 @@ func (o *Config) Address() string {
 
 func (o *Config) DbPath() string {
 	return o.dbPath
-}
-
-func (o *Config) Http() *Http {
-	return &o.http
 }
 
 func (o *Config) Limit() *Limit {
@@ -116,12 +105,4 @@ type Limit struct {
 
 func (o *Limit) TextLength() int {
 	return o.textLength
-}
-
-type Http struct {
-	cors bool
-}
-
-func (o *Http) Cors() bool {
-	return o.cors
 }

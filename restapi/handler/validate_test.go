@@ -1,10 +1,9 @@
 package handler
 
 import (
-	"net/http/httptest"
+	"net/http"
 	"testing"
 
-	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/verdverm/frisby"
 )
@@ -12,8 +11,8 @@ import (
 func TestValidate(t *testing.T) {
 	defer testGinMode()()
 
-	srv := httptest.NewServer(DefaultRouter(&config.Config{}))
-	defer srv.Close()
+	srv, df := testDefaultRouter(t)
+	defer df()
 
 	testSuites := []*struct {
 		Description string
@@ -21,7 +20,18 @@ func TestValidate(t *testing.T) {
 		Status      int
 		Content     string
 	}{
-		{},
+		{
+			Description: "valid",
+			Iban:        "BR 97 00360305 00001 0009795493 P 1",
+			Status:      http.StatusOK,
+			Content:     `{"iban":"valid"}`,
+		},
+		{
+			Description: "invalid",
+			Iban:        "BR 97 289312873612786",
+			Status:      http.StatusPreconditionFailed,
+			Content:     `{"iban":"invalid"}`,
+		},
 	}
 
 	for _, test := range testSuites {

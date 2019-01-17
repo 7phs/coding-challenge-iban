@@ -1,10 +1,8 @@
 package handler
 
 import (
-	"net/http/httptest"
 	"testing"
 
-	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/verdverm/frisby"
 )
@@ -12,8 +10,8 @@ import (
 func TestHealthCheck(t *testing.T) {
 	defer testGinMode()()
 
-	srv := httptest.NewServer(DefaultRouter(&config.Config{}))
-	defer srv.Close()
+	srv, df := testDefaultRouter(t)
+	defer df()
 
 	f := frisby.Create("Test successful a health check").
 		Get(srv.URL + "/health/check").

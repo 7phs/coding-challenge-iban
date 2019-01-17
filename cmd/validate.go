@@ -34,7 +34,7 @@ var ValidateCmd = &cobra.Command{
 			CountriesFormat: db.CountriesFmt,
 		})
 
-		valid := model.Validator()
+		valid := model.Default.Validator()
 
 		for _, arg := range args {
 			fmt.Print(arg, ": ")

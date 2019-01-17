@@ -5,13 +5,14 @@ import (
 
 	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/7phs/coding-challenge-iban/helper"
+	"github.com/7phs/coding-challenge-iban/model"
 	"github.com/7phs/coding-challenge-iban/model/errCode"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 )
 
 type HandlerFactory interface {
-	New() HandlerImpl
+	New(model.Models) HandlerImpl
 }
 
 type HandlerImpl interface {
@@ -21,9 +22,9 @@ type HandlerImpl interface {
 	Process(c *gin.Context)
 }
 
-func NewHandler(conf *config.Config, factory HandlerFactory) gin.HandlerFunc {
+func NewHandler(conf *config.Config, models model.Models, factory HandlerFactory) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		handler := factory.New()
+		handler := factory.New(models)
 
 		// BIND PARAMS
 		if err := handler.Bind(c); err != nil {

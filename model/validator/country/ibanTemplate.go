@@ -55,6 +55,16 @@ func NewIbanTemplate(template string) (*IbanTemplate, error) {
 	return (&IbanTemplate{}).Parse(template)
 }
 
+func MustIbanTemplate(template string) *IbanTemplate {
+	o, _ := (&IbanTemplate{}).Parse(template)
+
+	return o
+}
+
+func (o *IbanTemplate) Nil() bool {
+	return o.Regexp == nil
+}
+
 func (o *IbanTemplate) Parse(template string) (*IbanTemplate, error) {
 	rg, err := ParseIbanTemplate(template)
 	if err != nil {

@@ -7,9 +7,10 @@ import (
 )
 
 var (
-	ErrCountryLength   = errors.New("length invalid")
-	ErrCountryTemplate = errors.New("not match country template")
-	ErrCountryKk       = errors.New("kk invalid")
+	ErrCountryLength        = errors.New("length invalid")
+	ErrCountryEmptyTemplate = errors.New("empty template")
+	ErrCountryTemplate      = errors.New("not match country template")
+	ErrCountryKk            = errors.New("kk invalid")
 )
 
 type Format struct {
@@ -30,7 +31,9 @@ func (o *Format) Validate(kk, text, suffix string) error {
 		errList.Add(ErrCountryKk)
 	}
 
-	if !o.Template.Match([]byte(suffix)) {
+	if o.Template.Nil() {
+		errList.Add(ErrCountryEmptyTemplate)
+	} else if !o.Template.Match([]byte(suffix)) {
 		errList.Add(ErrCountryTemplate)
 	}
 

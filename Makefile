@@ -7,10 +7,7 @@ build:
 	go build -o iban-validator -ldflags "-X github.com/7phs/coding-challenge-iban/cmd.BuildTime=`date +%Y-%m-%d:%H:%M:%S` -X github.com/7phs/coding-challenge-iban/cmd.GitHash=`git rev-parse --short HEAD`"
 
 testing:
-	LOG_LEVEL=error DB_PATH=$(shell pwd)/data/countries-iban.yaml go test ./...
-
-testing-short:
-	LOG_LEVEL=error DB_PATH=$(shell pwd)/data/countries-iban.yaml go test -short ./...
+	LOG_LEVEL=error go test ./...
 
 image:
 	docker build -t $(IMAGE):$(VERSION)  .

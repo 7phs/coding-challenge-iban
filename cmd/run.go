@@ -41,7 +41,7 @@ var RunCmd = &cobra.Command{
 		})
 
 		server := restapi.
-			NewServer(conf, handler.DefaultRouter(conf)).
+			NewServer(conf, handler.DefaultRouter(conf, model.Default)).
 			Run()
 
 		stop := make(chan os.Signal)

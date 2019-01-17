@@ -20,6 +20,8 @@ type ValidateHandlerResponse struct {
 }
 
 type ValidateHandler struct {
+	mdl model.Models
+
 	request struct {
 		iban string
 	}
@@ -28,8 +30,10 @@ type ValidateHandler struct {
 	}
 }
 
-func (o *ValidateHandler) New() common.HandlerImpl {
-	return &ValidateHandler{}
+func (o *ValidateHandler) New(mdl model.Models) common.HandlerImpl {
+	return &ValidateHandler{
+		mdl: mdl,
+	}
 }
 
 func (o *ValidateHandler) LogPrefix() string {
@@ -59,7 +63,7 @@ func (o *ValidateHandler) Validate(conf *config.Config) error {
 func (o *ValidateHandler) Process(c *gin.Context) {
 	var status int
 
-	if err := model.Validator().Validate(records.NewIban(o.request.iban)); err != nil {
+	if err := o.mdl.Validator().Validate(records.NewIban(o.request.iban)); err != nil {
 		o.response.Status = validator.Invalid
 
 		status = http.StatusPreconditionFailed

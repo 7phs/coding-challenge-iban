@@ -55,6 +55,8 @@ func (o *Iban) toNumber(str string) (number big.Int) {
 		return strconv.Itoa(10 + int(ch[0]-'A'))
 	})
 
+	str = strings.TrimLeft(str, "0")
+
 	number.UnmarshalText([]byte(str))
 
 	return

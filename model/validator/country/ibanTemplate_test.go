@@ -1,9 +1,11 @@
 package country
 
 import (
+	"regexp"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"gopkg.in/yaml.v2"
 )
 
 func TestParseIbanTemplate(t *testing.T) {
@@ -42,12 +44,26 @@ func TestParseIbanTemplate(t *testing.T) {
 		},
 	}
 
-	for _, test := range testSuites {
+	for i, test := range testSuites {
 		exist, err := ParseIbanTemplate(test.in)
 		if test.err {
-			assert.Error(t, err, "not catch a parsing error")
-		} else if assert.NoError(t, err, "got a parsing error, %v", err) {
+			assert.Error(t, err, "%d: not catch a parsing error", i)
+		} else if assert.NoError(t, err, "%d: got a parsing error, %v", i, err) {
 			assert.Equal(t, test.exp, exist)
+		}
+
+		if len(test.in) > 0 {
+			obj := &IbanTemplate{}
+			err = yaml.Unmarshal([]byte(test.in), &obj)
+			if test.err {
+				assert.Error(t, err, "%d: not catch a parsing error", i)
+			} else if assert.NoError(t, err, "%d: got a parsing error, %v", i, err) {
+				assert.Equal(t,
+					&IbanTemplate{
+						Regexp: regexp.MustCompile(test.exp),
+					},
+					obj)
+			}
 		}
 	}
 }

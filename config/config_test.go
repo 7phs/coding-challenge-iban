@@ -13,7 +13,7 @@ func setupCofigTest() func() {
 	for _, name := range []string{
 		EnvStage, EnvLogLevel,
 		EnvAddress, EnvDbPath,
-		EnvCors, EnvTextLength,
+		EnvTextLength,
 	} {
 		prev[name] = os.Getenv(name)
 	}
@@ -35,7 +35,7 @@ func resetEnv() {
 	for _, name := range []string{
 		EnvStage, EnvLogLevel,
 		EnvAddress, EnvDbPath,
-		EnvCors, EnvTextLength,
+		EnvTextLength,
 	} {
 		os.Setenv(name, "")
 	}
@@ -77,7 +77,6 @@ func TestConfig(t *testing.T) {
 				EnvLogLevel:   LogLevelWarning.String(),
 				EnvAddress:    ":8080",
 				EnvDbPath:     existingDbPath,
-				EnvCors:       "true",
 				EnvTextLength: "4012",
 			},
 			exp: &Config{
@@ -87,9 +86,6 @@ func TestConfig(t *testing.T) {
 				address: ":8080",
 				dbPath:  "../test-data/countries-test.yaml",
 
-				http: Http{
-					cors: true,
-				},
 				limit: Limit{
 					textLength: 4012,
 				},
@@ -177,7 +173,6 @@ func TestConfig(t *testing.T) {
 		assert.Equal(t, test.exp.logLevel, exist.LogLevel())
 		assert.Equal(t, test.exp.address, exist.Address())
 		assert.Equal(t, test.exp.dbPath, exist.DbPath())
-		assert.Equal(t, test.exp.http.cors, exist.Http().Cors())
 		assert.Equal(t, test.exp.limit.textLength, exist.Limit().TextLength())
 
 		err := exist.Validate()
