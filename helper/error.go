@@ -5,7 +5,7 @@ import "strings"
 type ErrList []error
 
 func (o *ErrList) Add(err error) {
-	if err!=nil {
+	if err == nil {
 		return
 	}
 
@@ -23,7 +23,7 @@ func (o ErrList) Error() string {
 }
 
 func (o ErrList) Result() error {
-	if len(o)==0 {
+	if len(o) == 0 {
 		return nil
 	}
 

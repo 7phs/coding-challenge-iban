@@ -13,6 +13,15 @@ const (
 	LogLevelUnknown LogLevel = "unknown"
 )
 
+var (
+	LogLevelAll = strings.Join([]string{
+		string(LogLevelError),
+		string(LogLevelWarning),
+		string(LogLevelInfo),
+		string(LogLevelDebug),
+	}, ", ")
+)
+
 type LogLevel string
 
 func NewLogLevel(str string) LogLevel {

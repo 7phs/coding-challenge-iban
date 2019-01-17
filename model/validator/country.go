@@ -21,7 +21,7 @@ func NewCountry(db CountriesFormatDB) *Country {
 
 func (o *Country) Validate(rec *records.Iban) error {
 	fmt, err := o.db.Get(rec.CountryCode())
-	if err!=nil {
+	if err != nil {
 		return err
 	}
 

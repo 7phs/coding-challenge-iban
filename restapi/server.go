@@ -2,10 +2,11 @@ package restapi
 
 import (
 	"context"
-	"github.com/7phs/coding-challenge-iban/config"
-	log "github.com/sirupsen/logrus"
 	"net/http"
 	"time"
+
+	"github.com/7phs/coding-challenge-iban/config"
+	log "github.com/sirupsen/logrus"
 )
 
 const (

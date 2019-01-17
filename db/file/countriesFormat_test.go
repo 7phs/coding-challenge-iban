@@ -1,14 +1,15 @@
 package file
 
 import (
-	"github.com/7phs/coding-challenge-iban/model/records"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/7phs/coding-challenge-iban/model/validator/country"
+	"github.com/stretchr/testify/assert"
 )
 
-func testParseTemplate(t *testing.T, template string) (rec records.IbanFormat) {
-	f, err := records.NewIbanFormat(template)
-	if !assert.NoError(t, err, "failed to parse iban template, %s", err){
+func testParseTemplate(t *testing.T, template string) (rec country.IbanTemplate) {
+	f, err := country.NewIbanTemplate(template)
+	if !assert.NoError(t, err, "failed to parse iban template, %s", err) {
 		return
 	}
 
@@ -20,8 +21,9 @@ func TestCountriesFormat(t *testing.T) {
 	if !assert.NoError(t, err, "failed to init db") {
 		return
 	}
+	defer db.Shutdown()
 
-	expected := map[string]*records.CountryFormat{
+	expected := map[string]*country.Format{
 		"BA": {
 			Country:  "Bosnia and Herzegovina",
 			Len:      20,
@@ -29,14 +31,14 @@ func TestCountriesFormat(t *testing.T) {
 			Kk:       "39",
 		},
 		"BR": {
-			Country: "Brazil",
+			Country:  "Brazil",
 			Template: testParseTemplate(t, "23n,1a,1c"),
-			Len:     29,
+			Len:      29,
 		},
 		"CY": {
-			Country: "Cyprus",
+			Country:  "Cyprus",
 			Template: testParseTemplate(t, "8n,16c"),
-			Len:     28,
+			Len:      28,
 		},
 	}
 
@@ -50,4 +52,10 @@ func TestCountriesFormat(t *testing.T) {
 
 	_, err = db.Get("UNK")
 	assert.Error(t, err, "failed to catch an error for an unknown country code")
+}
+
+func TestCountriesFormat_Invalid(t *testing.T) {
+	db, err := NewCountriesFormat("../../unknown-data/unknown.unk")
+	assert.Error(t, err, "failed to catch an error")
+	db.Shutdown()
 }

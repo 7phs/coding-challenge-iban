@@ -12,6 +12,14 @@ const (
 	StageUnknown Stage = "unknown"
 )
 
+var (
+	StageAll = strings.Join([]string{
+		string(StageProd),
+		string(StageDev),
+		string(StageTest),
+	}, ", ")
+)
+
 type Stage string
 
 func NewStage(str string) Stage {

@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/7phs/coding-challenge-iban/config"
-	"github.com/7phs/coding-challenge-iban/restapi/common"
 	"net/http"
 
+	"github.com/7phs/coding-challenge-iban/config"
+	"github.com/7phs/coding-challenge-iban/restapi/common"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 )

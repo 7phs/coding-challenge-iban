@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/spf13/cobra"
 )

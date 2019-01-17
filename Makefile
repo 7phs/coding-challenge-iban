@@ -3,17 +3,17 @@ VERSION = latest
 
 build: export GO111MODULE=on
 build:
-
-	go build -o iban-validator -ldflags "-X github.com/7phs/coding-challenge-iban/cmd.BuildTime=`date +%Y-%m-%d:%H:%M:%S` -X github.com/7phs/coding-challenge-iban/cmd.GitHash=`${GIT_HASH}`"
+	go mod vendor
+	go build -o iban-validator -ldflags "-X github.com/7phs/coding-challenge-iban/cmd.BuildTime=`date +%Y-%m-%d:%H:%M:%S` -X github.com/7phs/coding-challenge-iban/cmd.GitHash=`git rev-parse --short HEAD`"
 
 testing:
-	LOG_LEVEL=error DATA_PATH=$(shell pwd)/data go test ./...
+	LOG_LEVEL=error DB_PATH=$(shell pwd)/data/countries-iban.yaml go test ./...
 
 testing-short:
-	LOG_LEVEL=error DATA_PATH=$(shell pwd)/data go test -short ./...
+	LOG_LEVEL=error DB_PATH=$(shell pwd)/data/countries-iban.yaml go test -short ./...
 
 image:
-	docker build -t $(IMAGE):$(VERSION) --build-arg SSH_PRIVATE_KEY="$$(cat ~/.ssh/id_rsa)" --build-arg GIT_HASH="$$(git rev-parse --short HEAD)" .
+	docker build -t $(IMAGE):$(VERSION)  .
 
 push:
 	docker push $(IMAGE):$(VERSION)

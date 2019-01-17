@@ -1,12 +1,13 @@
 package common
 
 import (
+	"net/http"
+
 	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/7phs/coding-challenge-iban/helper"
 	"github.com/7phs/coding-challenge-iban/model/errCode"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
-	"net/http"
 )
 
 type HandlerFactory interface {

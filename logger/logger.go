@@ -2,11 +2,12 @@ package logger
 
 import (
 	"bytes"
+	"log"
+	"os"
+
 	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"log"
-	"os"
 )
 
 const (

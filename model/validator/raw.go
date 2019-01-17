@@ -1,16 +1,17 @@
 package validator
 
 import (
-	"github.com/7phs/coding-challenge-iban/model/records"
 	"os"
 	"regexp"
+
+	"github.com/7phs/coding-challenge-iban/model/records"
 )
 
 var (
 	matcher = regexp.MustCompile(`^([a-zA-Z0-9]+\s*)+$`)
 )
 
-type Raw struct {}
+type Raw struct{}
 
 func NewRaw() *Raw {
 	return &Raw{}

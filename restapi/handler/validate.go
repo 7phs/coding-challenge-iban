@@ -1,6 +1,9 @@
 package handler
 
 import (
+	"net/http"
+	"strings"
+
 	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/7phs/coding-challenge-iban/helper"
 	"github.com/7phs/coding-challenge-iban/model"
@@ -9,8 +12,6 @@ import (
 	"github.com/7phs/coding-challenge-iban/model/validator"
 	"github.com/7phs/coding-challenge-iban/restapi/common"
 	"github.com/gin-gonic/gin"
-	"net/http"
-	"strings"
 )
 
 type ValidateHandlerResponse struct {
@@ -56,11 +57,17 @@ func (o *ValidateHandler) Validate(conf *config.Config) error {
 }
 
 func (o *ValidateHandler) Process(c *gin.Context) {
+	var status int
+
 	if err := model.Validator().Validate(records.NewIban(o.request.iban)); err != nil {
 		o.response.Status = validator.Invalid
+
+		status = http.StatusPreconditionFailed
 	} else {
 		o.response.Status = validator.Valid
+
+		status = http.StatusOK
 	}
 
-	c.JSON(http.StatusOK, o.response)
+	c.JSON(status, o.response)
 }

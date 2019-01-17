@@ -9,7 +9,7 @@ import (
 )
 
 func ParseIbanTemplate(template string) (string, error) {
-	if len(template)==0 {
+	if len(template) == 0 {
 		return "", fmt.Errorf("empty template")
 	}
 

@@ -1,8 +1,9 @@
 package country
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestParseIbanTemplate(t *testing.T) {
@@ -12,31 +13,31 @@ func TestParseIbanTemplate(t *testing.T) {
 		err bool
 	}{
 		{
-			in: "",
+			in:  "",
 			err: true,
 		},
 		{
-			in: "7n",
+			in:  "7n",
 			exp: "^[0-9]{7}$",
 		},
 		{
-			in: "19a",
+			in:  "19a",
 			exp: "^[A-Z]{19}$",
 		},
 		{
-			in: "2c",
+			in:  "2c",
 			exp: "^[a-zA-Z0-9]{2}$",
 		},
 		{
-			in: "23n,1a,1c",
+			in:  "23n,1a,1c",
 			exp: "^[0-9]{23}[A-Z]{1}[a-zA-Z0-9]{1}$",
 		},
 		{
-			in: "23z,1a,1c",
+			in:  "23z,1a,1c",
 			err: true,
 		},
 		{
-			in: "14a,15n,1za",
+			in:  "14a,15n,1za",
 			err: true,
 		},
 	}

@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"github.com/7phs/coding-challenge-iban/config"
 	"net/http/httptest"
 	"testing"
 
+	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/verdverm/frisby"
 )

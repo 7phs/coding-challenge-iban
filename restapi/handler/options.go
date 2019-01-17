@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"github.com/7phs/coding-challenge-iban/config"
 	"net/http"
 
+	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/gin-gonic/gin"
 )
 

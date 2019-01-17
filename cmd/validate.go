@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/7phs/coding-challenge-iban/db"
 	"github.com/7phs/coding-challenge-iban/helper"
@@ -22,11 +23,11 @@ var ValidateCmd = &cobra.Command{
 		conf := config.ParseConfig()
 
 		if err := conf.Validate(); err != nil {
-			helper.Fatal( "config: invalid, ", err)
+			helper.Fatal("config: invalid, ", err)
 		}
 
 		if err := db.Init(conf); err != nil {
-			helper.Fatal( "IBAN an arg or more required")
+			helper.Fatal("IBAN an arg or more required")
 		}
 
 		model.Init(&model.Dependencies{

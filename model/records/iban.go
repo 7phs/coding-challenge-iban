@@ -13,7 +13,7 @@ const (
 )
 
 var (
-	cleaner = regexp.MustCompile("[^a-zA-Z0-9]+")
+	cleaner  = regexp.MustCompile("[^a-zA-Z0-9]+")
 	replacer = regexp.MustCompile("[a-zA-Z]")
 )
 
@@ -49,7 +49,7 @@ func (o *Iban) clean(raw string) string {
 }
 
 func (o *Iban) toNumber(str string) (number big.Int) {
-	str = strings.ToUpper(str[4:]+str[0:4])
+	str = strings.ToUpper(str[4:] + str[0:4])
 
 	str = replacer.ReplaceAllStringFunc(str, func(ch string) string {
 		return strconv.Itoa(10 + int(ch[0]-'A'))
@@ -92,13 +92,13 @@ func (o *Iban) String() string {
 	buf := bytes.NewBufferString("")
 	i := 0
 
-	for j:=4; j<len(o.text); j+=4 {
+	for j := 4; j < len(o.text); j += 4 {
 		buf.WriteString(o.text[i:j])
 		buf.WriteString(" ")
-		i+=4
+		i += 4
 	}
 	// write a rest of the string
-	if i<len(o.text) {
+	if i < len(o.text) {
 		buf.WriteString(o.text[i:])
 	}
 

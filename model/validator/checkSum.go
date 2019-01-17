@@ -1,13 +1,14 @@
 package validator
 
 import (
-	"github.com/7phs/coding-challenge-iban/model/records"
 	"math/big"
 	"os"
+
+	"github.com/7phs/coding-challenge-iban/model/records"
 )
 
 var (
-	modBase = big.NewInt(97)
+	modBase         = big.NewInt(97)
 	modBaseCheckSum = big.NewInt(1)
 )
 
@@ -18,7 +19,7 @@ func NewCheckSum() *CheckSum {
 }
 
 func (o *CheckSum) Validate(rec *records.Iban) error {
-	if modBaseCheckSum.Cmp((&big.Int{}).Mod(rec.Number(), modBase))!=0 {
+	if modBaseCheckSum.Cmp((&big.Int{}).Mod(rec.Number(), modBase)) != 0 {
 		return os.ErrInvalid
 	}
 

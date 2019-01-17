@@ -2,9 +2,10 @@ package file
 
 import (
 	"bufio"
+	"os"
+
 	"github.com/7phs/coding-challenge-iban/model/validator/country"
 	"gopkg.in/yaml.v2"
-	"os"
 )
 
 type CountriesFormat struct {

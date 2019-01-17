@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/7phs/coding-challenge-iban/cmd"
 	"os"
+
+	"github.com/7phs/coding-challenge-iban/cmd"
 )
 
 func main() {

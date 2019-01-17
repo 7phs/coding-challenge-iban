@@ -1,11 +1,12 @@
 package handler
 
 import (
+	"net/http/httptest"
+	"testing"
+
 	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/verdverm/frisby"
-	"net/http/httptest"
-	"testing"
 )
 
 func TestValidate(t *testing.T) {
@@ -20,9 +21,7 @@ func TestValidate(t *testing.T) {
 		Status      int
 		Content     string
 	}{
-		{
-
-		},
+		{},
 	}
 
 	for _, test := range testSuites {

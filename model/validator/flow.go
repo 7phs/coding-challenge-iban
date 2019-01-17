@@ -18,7 +18,7 @@ func (o *Flow) Then(validator Validator) *Flow {
 
 func (o *Flow) Validate(rec *records.Iban) error {
 	for _, validator := range o.validators {
-		if err:=validator.Validate(rec); err!=nil {
+		if err := validator.Validate(rec); err != nil {
 			return err
 		}
 	}

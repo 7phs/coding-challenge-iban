@@ -1,6 +1,9 @@
 package cmd
 
 import (
+	"os"
+	"os/signal"
+
 	"github.com/7phs/coding-challenge-iban/config"
 	"github.com/7phs/coding-challenge-iban/db"
 	"github.com/7phs/coding-challenge-iban/logger"
@@ -9,8 +12,6 @@ import (
 	"github.com/7phs/coding-challenge-iban/restapi/handler"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-	"os"
-	"os/signal"
 )
 
 var RunCmd = &cobra.Command{
@@ -23,11 +24,13 @@ var RunCmd = &cobra.Command{
 
 		log.Info(ApplicationInfo())
 
-		if err := conf.Validate(); err!=nil {
+		if err := conf.Validate(); err != nil {
 			log.Fatal("config: invalid, ", err)
 		}
 
-		if err := db.Init(conf); err!=nil {
+		conf.Dump()
+
+		if err := db.Init(conf); err != nil {
 			log.Fatal("db: failed to init, ", err)
 		}
 
